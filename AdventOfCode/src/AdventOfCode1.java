@@ -14,25 +14,34 @@ public class AdventOfCode1 {
 
         Scanner scanFile = new Scanner(new File("src/inputDay1.txt"));
 
-        int firstDigit = 0, secondDigit = 0, count = 0;
+        int firstDigit = 0, secondDigit = 0, nextDigit = 0, count = 0;
         boolean readTwoLines = false;
+
+        firstDigit = scanFile.nextInt();
+        secondDigit = scanFile.nextInt();
 
         while (scanFile.hasNextLine()) {
 
-            firstDigit = scanFile.nextInt();
+
             while (!readTwoLines && scanFile.hasNextLine()) {
                 secondDigit = scanFile.nextInt();
                 readTwoLines = true;
             }
 
-           System.out.println(" "+firstDigit+" "+secondDigit);
+            nextDigit = scanFile.nextInt();
 
-            if(firstDigit < secondDigit) count += 1;
+           System.out.println(secondDigit+" "+nextDigit);
+            if(secondDigit < nextDigit) {
+              count += 1;
+              secondDigit = nextDigit;
+            }
+
 
 
         }
 
         System.out.println("Count: "+count);
+
 
 
     }
