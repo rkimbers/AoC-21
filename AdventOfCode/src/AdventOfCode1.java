@@ -14,11 +14,12 @@ public class AdventOfCode1 {
 
         Scanner scanFile = new Scanner(new File("src/inputDay1.txt"));
 
-        int firstDigit = 0, secondDigit = 0, nextDigit = 0, count = 0;
+        int firstDigit = 0, secondDigit = 0, nextDigit = 0, count = 1;
         boolean readTwoLines = false;
 
         firstDigit = scanFile.nextInt();
         secondDigit = scanFile.nextInt();
+
 
         while (scanFile.hasNextLine()) {
 
@@ -33,9 +34,9 @@ public class AdventOfCode1 {
            System.out.println(secondDigit+" "+nextDigit);
             if(secondDigit < nextDigit) {
               count += 1;
-              secondDigit = nextDigit;
-            }
 
+            }
+            secondDigit = nextDigit;
 
 
         }
