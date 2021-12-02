@@ -30,8 +30,6 @@ public class AdventOfCode1 {
             }
 
             nextDigit = scanFile.nextInt();
-
-           System.out.println(secondDigit+" "+nextDigit);
             if(secondDigit < nextDigit) {
               count += 1;
 
@@ -41,10 +39,55 @@ public class AdventOfCode1 {
 
         }
 
-        System.out.println("Count: "+count);
+        System.out.println("Count - p1: "+count);
+
+        //------------part 2---------------
+
+        Scanner scanFile2 = new Scanner(new File("src/inputDay1.txt"));
+
+        firstDigit = 0;
+        secondDigit = 0;
+        nextDigit = 0;
+        count = 1;
+        int thirdDigit = 0, fourthDigit = 0, sum, nextSum;
+
+        firstDigit = scanFile2.nextInt();
+        secondDigit = scanFile2.nextInt();
+        thirdDigit = scanFile2.nextInt();
+        fourthDigit = scanFile2.nextInt();
 
 
+
+        while (scanFile2.hasNextLine()) {
+
+
+            sum = firstDigit + secondDigit + thirdDigit;
+
+            nextSum = secondDigit + thirdDigit + fourthDigit;
+
+            System.out.println(sum+" "+nextSum);
+
+            nextDigit = scanFile2.nextInt();
+
+            if (nextSum > sum){
+                count += 1;
+
+            }
+            firstDigit = secondDigit;
+            secondDigit = thirdDigit;
+            thirdDigit = fourthDigit;
+            fourthDigit = nextDigit;
+
+
+
+        }
+
+
+        System.out.println("Count - p2: "+count);
 
     }
 
+
 }
+
+
