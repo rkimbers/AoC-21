@@ -42,6 +42,7 @@ public class AdventOfCode4 {
         System.out.println(boards);
 
         List<List<Integer>> winningBoard = null;
+        List<List<Integer>> losingBoard = null;
         game: for (int k = 0; k < currentNumbers.length; k++) {
             String currentSelection = currentNumbers[k];
             int currentDigit = Integer.parseInt(currentSelection);
@@ -63,7 +64,10 @@ public class AdventOfCode4 {
                             winningBoard = checkWinner(boards);
                             if (winningBoard != null) {
                                 System.out.println("Winner");
-                                break game;
+                                System.out.println(winningBoard);
+                                winningBoard = null;
+                                iter.remove();
+//                                break board;
                             }
                         }
 
