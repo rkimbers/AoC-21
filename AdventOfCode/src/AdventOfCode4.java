@@ -69,9 +69,7 @@ public class AdventOfCode4 {
 
                     }
 
-
                 }
-
             }
         }
 
@@ -81,8 +79,7 @@ public class AdventOfCode4 {
 
     private static List<List<Integer>> checkWinner(List<List<List<Integer>>> boards) {
         boolean winner = false;
-        List<Integer> winningRow = null;
-        List<Integer> winningColumn = null;
+//        List<Integer> winningRow = null;
         List<List<Integer>> winningBoard = null;
         board: for (List<List<Integer>> rows : boards) {
 //            winningBoard = rows;
@@ -94,16 +91,28 @@ public class AdventOfCode4 {
                     }
                     count++;
                     if (count == 5) {
-                        winningRow = columns;
+//                        winningRow = columns;
                         winningBoard = rows;
                         break board;
                     }
                 }
-
+            }
+            for (int i=0; i < 5; i++) {
+                int count = 0;
+                for (int j=0; j < 5; j++) {
+                    Integer c = rows.get(j).get(i);
+                    if (c!=-1) {
+                        break;
+                    }
+                    count++;
+                    if (count == 5) {
+//                        winningRow = columns;
+                        winningBoard = rows;
+                        break board;
+                    }
+                }
             }
         }
         return winningBoard;
     }
 }
-
-//35056 too  high
