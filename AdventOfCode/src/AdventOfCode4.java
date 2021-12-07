@@ -106,4 +106,4 @@ public class AdventOfCode4 {
     }
 }
 
-//35056 too high
+//35056 too  high
