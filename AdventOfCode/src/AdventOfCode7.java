@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.*;
+import java.lang.Math;
 
 /*
   Ryan Kimberley
@@ -9,24 +11,45 @@ import java.io.*;
 
 
 public class AdventOfCode7 {
-    public static void main(String[]args)throws IOException{
+    public static void main(String[] args) throws IOException {
 
         Scanner scanFile = new Scanner(new File("src/inputDay7.txt"));
 
         String input = scanFile.nextLine();
 
         int count = 0;
+        int fuelCount = 0;
+        int nextFuelCount = 0;
+        int fuelNumber = 0;
+        int nextFuelNumber = 1;
+        int currentDigit = 0;
+        int stringLength = input.length();
 
-        for(int i = 0; i < input.length() - 1; i++){
-
-            count += (int)input.charAt(i);
-
-        }
 
         System.out.println(count);
 
-        //fuelNumber =
+        String[] numbers = input.split(",");
+
+        main : while (nextFuelCount <= fuelCount) {
+            for (String k : numbers) {
+
+                currentDigit = Integer.parseInt(k);
+                System.out.println(currentDigit);
+                fuelCount += Math.abs(currentDigit - fuelNumber);
+                nextFuelCount += Math.abs(currentDigit - nextFuelNumber);
+                fuelNumber += 1;
+                nextFuelNumber += 1;
 
 
+                }
+            if (nextFuelCount < fuelCount){
+                break main;
+
+
+            }
+
+        }
+        System.out.println(fuelNumber+" "+nextFuelNumber);
+        System.out.println(fuelCount+" "+nextFuelCount);
     }
 }
