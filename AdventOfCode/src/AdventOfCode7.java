@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 import java.io.*;
 import java.lang.Math;
@@ -17,39 +16,59 @@ public class AdventOfCode7 {
 
         String input = scanFile.nextLine();
 
-        int count = 0;
-        int fuelCount = 0;
-        int nextFuelCount = 0;
-        int fuelNumber = 0;
-        int nextFuelNumber = 1;
-        int currentDigit = 0;
-        int stringLength = input.length();
+        double count = 0;
+        double fuelCount = 0;
+        double fuelNumber = 0;
+        double currentDigit = 0;
+        double nextFuelCount = 0;
+        double min = 0;
 
-
-        System.out.println(count);
 
         String[] numbers = input.split(",");
 
-        main : while (nextFuelCount <= fuelCount) {
+        while(fuelNumber < 1500){
+            fuelCount = 0;
+            nextFuelCount = 0;
             for (String k : numbers) {
 
                 currentDigit = Integer.parseInt(k);
-                System.out.println(currentDigit);
                 fuelCount += Math.abs(currentDigit - fuelNumber);
-                nextFuelCount += Math.abs(currentDigit - nextFuelNumber);
-                fuelNumber += 1;
-                nextFuelNumber += 1;
-
-
-                }
-            if (nextFuelCount < fuelCount){
-                break main;
+                nextFuelCount += Math.abs(currentDigit - (fuelNumber+1));
 
 
             }
+            fuelNumber += 1;
+            if (nextFuelCount < fuelCount){
+                min = nextFuelCount;
+                count = (fuelNumber);
+            }
 
         }
-        System.out.println(fuelNumber+" "+nextFuelNumber);
-        System.out.println(fuelCount+" "+nextFuelCount);
+        System.out.println(count); //312
+        System.out.println(min); //347011
+
+        double newFuelNumber = count;
+        double newFuelCount = 0;
+        double n = 0;
+
+        for (String k : numbers) {
+
+            currentDigit = Integer.parseInt(k);
+            n = Math.abs(currentDigit - newFuelNumber);
+            double first = currentDigit*10 ;
+            double second = newFuelNumber*10;
+            newFuelCount += Math.abs(first-second);
+            //newFuelCount += (n/2)*(n+1);
+            //System.out.println(newFuelCount);
+
+
+
+        }
+        System.out.println(newFuelCount); //195195365 too high //not 3470110
+
+
+
+
+
     }
 }
